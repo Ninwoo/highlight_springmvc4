@@ -40,4 +40,9 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("/index");
     }
+
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        configurer.setUseSuffixPatternMatch(false);
+    }
 }
