@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-    @RequestMapping("/index")
-    public String hello() {
-        return "index";
-    }
+    /** 效率低下的写法 */
+//    @RequestMapping("/index")
+//    public String hello() {
+//        return "index";
+//    }
+
 }
