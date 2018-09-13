@@ -1,9 +1,11 @@
 package com.typh.highlight_springmvc4;
 
+import com.typh.highlight_springmvc4.Interceptor.DemoInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -20,6 +22,16 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         viewResolver.setViewClass(JstlView.class);
         return viewResolver;
+    }
+
+    @Bean
+    public DemoInterceptor demoInterceptor() {
+        return new DemoInterceptor();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(demoInterceptor());
     }
 
     @Override
